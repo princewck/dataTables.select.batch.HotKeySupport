@@ -24,6 +24,11 @@
 }(function( $, window, document, undefined ) {
     var DataTable = $.fn.dataTable;
 
+    this.pressShift = false;
+    this.pressCtrl = false;
+    this.startIndex = null;
+    this.endIndex = null;
+
     var init = function(table) {
         var self = this;
         if(!$.fn.dataTable.isDataTable(table)) {
@@ -47,39 +52,46 @@
                 self.pressCtrl = false;
             }
         });
-        var startIndex = null;
-        var endIndex = null;
 
         $(table).on('click','tr', function() {
+            console.log('pressShift:'+self.pressShift);
+            console.log('pressCtrl:'+self.pressCtrl);
             if(!self.pressShift && self.pressCtrl) {
                 if(!$(this).hasClass('selected')) {
                     dt.row($(this)).deselect();
                 } else {
                     dt.row($(this)).select();
                 }
-                startIndex = $(this).index();
+                console.log('start&ctrl');
+                self.startIndex = $(this).index();
                 return;
             } else if (self.pressShift && !self.pressCtrl) {
-                if(startIndex) {
-                    endIndex = $(this).index();
+                console.log(self.startIndex);
+                if(self.startIndex >= 0) {
+                    self.endIndex = $(this).index();
+                    console.log('end');
                 } else {
-                    startIndex = $(this).index();
+                    self.startIndex = $(this).index();
+                    console.log('start&shift');
                     return;
                 }
-                if(startIndex && endIndex) {
-                    if(startIndex>endIndex) {
-                        var temp = startIndex;
-                        startIndex = endIndex;
-                        endIndex =temp;
+                if(self.startIndex >= 0 && self.endIndex >= 0) {
+                    if(self.startIndex>self.endIndex) {
+                        var temp = self.startIndex;
+                        self.startIndex = self.endIndex;
+                        self.endIndex =temp;
                     }
-                    for(var i = startIndex; i <= endIndex;i++) {
+                    for(var i = self.startIndex; i <= self.endIndex;i++) {
                         dt.row($(table).find('tbody tr').eq(i)).select();
                     }
+                    self.startIndex = null;
+                    self.endIndex = null;
                 }
             } else {
+                console.log('start & null');
                 dt.rows( { selected: true } ).deselect()
                 dt.row($(this)).select();
-                startIndex = $(this).index();
+                self.startIndex = $(this).index();
                 return;
             }
         });
