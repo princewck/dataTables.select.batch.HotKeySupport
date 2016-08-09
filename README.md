@@ -22,5 +22,5 @@ add init paremeter to datatables like this:
 
 
 
-### that all !
+### that do be all !
 
