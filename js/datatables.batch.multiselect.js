@@ -54,25 +54,19 @@
         });
 
         $(table).on('click','tr', function() {
-            console.log('pressShift:'+self.pressShift);
-            console.log('pressCtrl:'+self.pressCtrl);
             if(!self.pressShift && self.pressCtrl) {
                 if(!$(this).hasClass('selected')) {
                     dt.row($(this)).deselect();
                 } else {
                     dt.row($(this)).select();
                 }
-                console.log('start&ctrl');
                 self.startIndex = $(this).index();
                 return;
             } else if (self.pressShift && !self.pressCtrl) {
-                console.log(self.startIndex);
                 if(self.startIndex >= 0) {
                     self.endIndex = $(this).index();
-                    console.log('end');
                 } else {
                     self.startIndex = $(this).index();
-                    console.log('start&shift');
                     return;
                 }
                 if(self.startIndex >= 0 && self.endIndex >= 0) {
@@ -88,7 +82,6 @@
                     self.endIndex = null;
                 }
             } else {
-                console.log('start & null');
                 dt.rows( { selected: true } ).deselect()
                 dt.row($(this)).select();
                 self.startIndex = $(this).index();
@@ -99,7 +92,7 @@
 
     var MultiSelect = function() {
         $(document).on( 'preInit.dt.dtr', function (e, settings) {
-            console.log('batchSelect initialized');
+            console.log('%cbatchSelect initialized !','color:green');
             if ( e.namespace !== 'dt' ) {
                 return;
             }
