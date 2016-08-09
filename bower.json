@@ -13,6 +13,15 @@
     "for",
     "datatables"
   ],
+  "dependencies": {
+    "datatables.net": "~1.10.10",
+    "datatables.net-bs": "~1.10.10",
+    "datatables.net-buttons-bs": "~1.1.0",
+    "datatables.net-fixedheader-bs": "~3.1.0",
+    "datatables.net-scroller-bs": "~1.4.0",
+    "datatables.net-select-bs": "~1.1.0",
+    "datatables.net-fixedcolumns-bs": "^3.2.1"
+  },
   "license": "MIT",
   "ignore": [
     "**/.*",
