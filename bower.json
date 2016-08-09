@@ -1,0 +1,25 @@
+{
+  "name": "datatables.select-batchHotKey",
+  "homepage": "https://github.com/princewck/dataTables.select.batch.HotKeySupport",
+  "authors": [
+    "princewck"
+  ],
+  "description": "batch select with 'shift'or'ctrl' for datatables.select",
+  "main": "",
+  "keywords": [
+    "datatables.select.shift",
+    "datatables.select",
+    "ctrl",
+    "for",
+    "datatables"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/public",
+    "test",
+    "tests"
+  ]
+}
