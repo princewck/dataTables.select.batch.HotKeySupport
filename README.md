@@ -1,4 +1,5 @@
-# dataTables.select.batch.HotKeySupport
+# dataTables.select.batch.HotKeySupport 
+  (deprecated please use datatables' select:os option )  
 'Shift' &amp; 'Ctrl' support  for dataTables multi-select function
 
 ##Useage
@@ -11,7 +12,7 @@
 
 add init paremeter to datatables like this:
 
-```json
+```javascript
 {
     batchMultiSelect: true
     select:{
@@ -22,5 +23,5 @@ add init paremeter to datatables like this:
 
 
 
-### that do be all !
+### that's all !
 
