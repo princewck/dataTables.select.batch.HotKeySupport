@@ -1,5 +1,5 @@
-# dataTables.select.batch.HotKeySupport 
-  (deprecated please use datatables' select:os option )  
+# dataTables batch select helper
+  (this plug is deprecated, please use datatables' select:os option )  
 'Shift' &amp; 'Ctrl' support  for dataTables multi-select function
 
 ##Useage
